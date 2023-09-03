@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('type');
             $table->bigInteger('value');
-            $table->double('min')->nullable();
-            $table->double('max')->nullable();
+            $table->double('minimum')->nullable();
+            $table->double('maximum')->nullable();
+            $table->string('vehicleType')->nullable();
             $table->timestamps();
         });
     }

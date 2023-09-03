@@ -22,14 +22,16 @@ class CalculateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'budget' => 'required|numeric'
+            'budget'     => 'required|numeric',
+            'vehicleType' => 'required|string'
         ];
     }
 
     public function messages()
     {
         return [
-            'budget' => 'The budget is required'
+            'budget' => 'The budget is required',
+            'vehicleType' => 'The type Vehicle is required'
         ];
     }
 }

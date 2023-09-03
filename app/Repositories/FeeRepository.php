@@ -17,13 +17,13 @@ class FeeRepository
         return Fee::where('name', $name)->get();
     }
 
-    public function getTypeAssocMinValue()
+    public function getDataById(int $id)
     {
-        return Fee::where('type', 'assoc')->min('value');
+        return Fee::where('id', $id)->get();
     }
 
-    public function getTypeAssocMaxValue()
+    public function getValueByVehicle(string $name, string $vehicleType)
     {
-        return Fee::where('type', 'assoc')->max('value');
+        return Fee::where('name', $name)->where('vehicleType', $vehicleType)->first();
     }
 }

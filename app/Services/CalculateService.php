@@ -3,25 +3,51 @@
 namespace App\Services;
 
 use App\Repositories\FeeRepository;
+use App\Traits\CalculateTrait;
 
 class CalculateService
 {
-    /**
-     *
-     * @var $feeRepository
-     */
-    private $feeRepository;
+    use CalculateTrait;
 
-    public function __construct(FeeRepository $feeRepository)
+    public function __construct(
+        private FeeRepository $feeRepository
+    ) {
+    }
+
+    public function getDataByType(string $type)
     {
-        $this->feeRepository = $feeRepository;
+        return $this->feeRepository->getDataByType($type);
     }
 
-    public function getDataByType(string $type) {
-       return $this->feeRepository->getDataByType($type);
-    }
-
-    public function getDataByName(string $name) {
+    public function getDataByName(string $name)
+    {
         return $this->feeRepository->getDataByName($name);
-     }
+    }
+
+    public function calculateCost(float $budget, string $vehicleType): array
+    {
+        $result = array();
+
+        //Fixed avlues
+        $fixedFees = $this->feeRepository->getDataByType('fixed')->first();
+        $fixedFee  = (float)$fixedFees->value;
+
+        //Basic Values
+        $basicFees = $this->feeRepository->getValueByVehicle('basic', $vehicleType);
+
+        //Special Values
+        $specialFees = $this->feeRepository->getValueByVehicle('special', $vehicleType);
+
+        //association  Values
+        $assocFees = $this->feeRepository->getDataByName('association');
+
+        $result['budget']    = $budget;
+        $result['fees']['basic']        = round($this->getValueBasic($budget, $basicFees->minimum, $basicFees->maximum,  $basicFees->value, 2));
+        $result['fees']['special']      = round($this->getValueSpecial($budget,  $specialFees->value), 2);
+        $result['fees']['association']  = round($this->getAssociatedFees($budget,  $assocFees), 2);
+        $result['fees']['storage']      = $fixedFee > 0 ? round($fixedFee, 2) : 0;
+        $result['total'] = round($budget +  $result['fees']['basic'] + $result['fees']['special'] +  $result['fees']['association'] + $fixedFee, 2);
+
+        return $result;
+    }
 }

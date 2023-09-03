@@ -16,59 +16,63 @@ class DatabaseSeeder extends Seeder
     {
         Fee::create([
             'name' => 'basic',
-            'type' => 'percent',
+            'type' => 'assoc',
             'value' => 10,
-            'min' => 10,
-            'max' => 50
+            'minimum' => 10,
+            'maximum' => 50,
+            'vehicleType' => 'Common'
         ]);
 
         Fee::create([
             'name' => 'basic',
-            'type' => 'percent',
+            'type' => 'assoc',
             'value' => 10,
-            'min' => 25,
-            'max' => 200
+            'minimum' => 25,
+            'maximum' => 200,
+            'vehicleType' => 'Luxury'
         ]);
 
         Fee::create([
             'name' => 'special',
-            'type' => 'percent',
+            'type' => 'assoc',
             'value' => 2,
+            'vehicleType' => 'Common'
         ]);
 
         Fee::create([
             'name' => 'special',
-            'type' => 'percent',
+            'type' => 'assoc',
             'value' => 4,
+            'vehicleType' => 'Luxury'
         ]);
 
         Fee::create([
             'name' => 'association',
             'type' => 'assoc',
             'value' => 5,
-            'min' => 1,
-            'max' => 500
+            'minimum' => 1,
+            'maximum' => 500
         ]);
 
         Fee::create([
             'name' => 'association',
             'type' => 'assoc',
             'value' => 10,
-            'min' => 501,
-            'max' => 1000
+            'minimum' => 501,
+            'maximum' => 1000
         ]);
         Fee::create([
             'name' => 'association',
             'type' => 'assoc',
             'value' => 15,
-            'min' => 1001,
-            'max' => 3000
+            'minimum' => 1001,
+            'maximum' => 3000
         ]);
         Fee::create([
             'name' => 'association',
             'type' => 'assoc',
             'value' => 20,
-            'min' => 3001
+            'minimum' => 3001
         ]);
         Fee::create([
             'name' => 'storage',

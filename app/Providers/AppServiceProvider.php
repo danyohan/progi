@@ -14,10 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        /*$this->app->bind(BidCalculationController::class, function ($app) {
-            return new CalculateService(new FeeRepository());
-          });*/
-
     }
 
     /**
