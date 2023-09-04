@@ -1,26 +1,26 @@
 <template>
-  <table class="table-auto tg">
+  <table class="border-collapse border-spacing-2 border-slate-400 ">
   <thead>
   <tr>
-      <th class="tg-73oq" rowspan="2">Vehicle Price ($)</th>
-      <th class="tg-73oq" colspan="4">Fees</th>
-      <th class="tg-73oq" rowspan="2">Total</th>
+      <th scope="col" class="px-6 py-4 border border-slate-300" rowspan="2">Vehicle Price ($)</th>
+      <th scope="col" class="px-6 py-4 border border-slate-300" colspan="4">Fees</th>
+      <th scope="col" class="px-6 py-4 border border-slate-300" rowspan="2">Total</th>
   </tr>
   <tr>
-      <th class="tg-73oq">Basic</th>
-      <th class="tg-73oq">Special</th>
-      <th class="tg-73oq">Association</th>
-      <th class="tg-73oq">Storage</th>
+      <th class="px-6 py-4 border border-slate-300">Basic</th>
+      <th class="px-6 py-4 border border-slate-300">Special</th>
+      <th class="px-6 py-4 border border-slate-300">Association</th>
+      <th class="px-6 py-4 border border-slate-300">Storage</th>
   </tr>
   </thead>
   <tbody>
   <tr>
-      <td class="tg-3z1b">{{budget.value}}</td>
-      <td class="tg-3z1b">{{budget.fees.basic}}</td>
-      <td class="tg-3z1b">{{budget.fees.special}}</td>
-      <td class="tg-3z1b">{{budget.fees.association}}</td>
-      <td class="tg-3z1b">{{budget.fees.storage}}</td>
-      <td class="tg-3z1b">{{budget.total}}</td>
+      <td class="text-center border border-slate-300">{{budget.value}}</td>
+      <td class="text-center border border-slate-300">{{budget.fees.basic}}</td>
+      <td class="text-center border border-slate-300">{{budget.fees.special}}</td>
+      <td class="text-center border border-slate-300">{{budget.fees.association}}</td>
+      <td class="text-center border border-slate-300">{{budget.fees.storage}}</td>
+      <td class="text-center border border-slate-300">{{budget.total}}</td>
   </tr>
   </tbody>
   </table>

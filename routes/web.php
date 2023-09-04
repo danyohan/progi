@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BidCalculationController;
+use App\Http\Controllers\CalculationController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 /*
@@ -18,7 +18,5 @@ Route::get('/', function () {
     return Inertia::render('Budget');
 })->name('index');
 
-Route::post('calculate', [BidCalculationController::class, 'calculate'])->name('calculate');
-
-
+Route::post('api/calculate', [CalculationController::class, 'getCalculation'])->name('calculation');
 

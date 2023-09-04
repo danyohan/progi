@@ -6,7 +6,7 @@ use App\Http\Requests\CalculateRequest;
 use App\Services\CalculateService;
 use Illuminate\Support\Facades\Response;
 
-class BidCalculationController extends Controller
+class CalculationController extends Controller
 {
     private $calculateService;
 
@@ -15,7 +15,7 @@ class BidCalculationController extends Controller
         $this->calculateService = $calculateService;
     }
 
-    public function calculate(CalculateRequest $request)
+    public function getCalculation(CalculateRequest $request)
     {
         $data = $request->validated();
 

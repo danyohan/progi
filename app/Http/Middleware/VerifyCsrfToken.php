@@ -15,6 +15,5 @@ class VerifyCsrfToken extends Middleware
      protected $addHttpCookie = true;
 
     protected $except = [
-        'http://localhost/calculate'
     ];
 }
