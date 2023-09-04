@@ -15,7 +15,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Budget');
+    return Inertia::render('CalculationBudget');
 })->name('index');
 
 Route::post('api/calculate', [CalculationController::class, 'getCalculation'])->name('calculation');

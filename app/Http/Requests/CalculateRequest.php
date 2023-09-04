@@ -22,7 +22,7 @@ class CalculateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'budget'     => 'required|numeric',
+            'budget'      => 'required|numeric',
             'vehicleType' => 'required|string'
         ];
     }
@@ -30,8 +30,8 @@ class CalculateRequest extends FormRequest
     public function messages()
     {
         return [
-            'budget' => 'The budget is required',
-            'vehicleType' => 'The type Vehicle is required'
+            'budget'      => 'The budget is required',
+            'vehicleType' => 'The Vehicle type is required'
         ];
     }
 }

@@ -2,33 +2,24 @@
 
 namespace App\Services;
 
-use App\Repositories\FeeRepository;
+use App\Interfaces\CalculationInterface;
+use App\Repositories\CalculationRepository;
 use App\Traits\CalculateTrait;
 
-class CalculateService
+class CalculateService implements CalculationInterface
 {
     use CalculateTrait;
 
     public function __construct(
-        private FeeRepository $feeRepository
+        private readonly CalculationRepository $feeRepository
     ) {
-    }
-
-    public function getDataByType(string $type)
-    {
-        return $this->feeRepository->getDataByType($type);
-    }
-
-    public function getDataByName(string $name)
-    {
-        return $this->feeRepository->getDataByName($name);
     }
 
     public function calculateCost(float $budget, string $vehicleType): array
     {
         $result = array();
 
-        //Fixed avlues
+        //Fixed values
         $fixedFees = $this->feeRepository->getDataByType('fixed')->first();
         $fixedFee  = (float)$fixedFees->value;
 
@@ -38,7 +29,7 @@ class CalculateService
         //Special Values
         $specialFees = $this->feeRepository->getValueByVehicle('special', $vehicleType);
 
-        //association  Values
+        //Association  Values
         $assocFees = $this->feeRepository->getDataByName('association');
 
         $result['budget']               = $budget;

@@ -3,27 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CalculateRequest;
-use App\Services\CalculateService;
-use Illuminate\Support\Facades\Response;
+use App\Interfaces\CalculationInterface;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CalculationController extends Controller
 {
-    private $calculateService;
 
-    public function __construct(CalculateService $calculateService )
-    {
-        $this->calculateService = $calculateService;
+    public function __construct(
+        private readonly CalculationInterface $calculateService
+    ) {
     }
 
-    public function getCalculation(CalculateRequest $request)
+    public function getCalculation(CalculateRequest $request): JsonResponse
     {
-        $data = $request->validated();
+        try {
+            $data = $request->validated();
 
-        $resultCost = $this->calculateService->calculateCost((double)$data['budget'], $data['vehicleType']);
+            $resultCost = $this->calculateService->calculateCost((float)$data['budget'], $data['vehicleType']);
 
-        return Response::json([
-            'result' => $resultCost
-        ]);
-   
+            return response()->json([
+                'result' => $resultCost
+            ], Response::HTTP_OK);
+        } catch (ValidationException $exception) {
+            return response()->json([
+                'result' => 'Invalid Validation'
+            ], Response::HTTP_BAD_REQUEST);
+        }
     }
 }

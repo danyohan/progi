@@ -1,10 +1,10 @@
 <script>
-import Results from '@/Pages/Results.vue';
+import Results from '@/Pages/Grid.vue';
 import Errors from '@/Pages/Error.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 
 export default {
-    name: 'Budget',
+    name: 'CalculationBudget',
     components: {
         Results,
         Errors,

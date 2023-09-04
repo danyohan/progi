@@ -34,13 +34,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;
-overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;
-font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-3z1b{border-color:#000000;text-align:right;vertical-align:top}
-.tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
-</style>

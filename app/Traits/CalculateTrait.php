@@ -4,14 +4,15 @@ namespace App\Traits;
 
 trait CalculateTrait {
 
-    public function getValueBasic($budget, $minValue, $maxValue, $porcent )
+    public function getValueBasic($budget, $minValue, $maxValue, $percent )
      {
-        $result = $this->getValueSpecial($budget, $porcent);
+        $result = $this->getValueSpecial($budget, $percent);
         return ($result <  $minValue) ?  $minValue : (($result >  $maxValue) ? $maxValue : $result);
      }
 
-     public function getValueSpecial($budget, $porcent ) {
-        return ($budget * $porcent / 100);
+     public function getValueSpecial($budget, $percent ): float|int
+     {
+        return ($budget * $percent / 100);
      }
 
      public function getAssociatedFees($budget, $associatedFees )  {
@@ -28,12 +29,12 @@ trait CalculateTrait {
         return $chosenAssociationFee;
      }
 
-     private function isInRange(float $amount, $min, $max)
+     private function isInRange(float $amount, $min, $max): bool
      {
 
-        if(is_null($max)) 
+        if(is_null($max))
         {
-            return ($amount > $min) ? true: false;
+            return $amount > $min;
         }
         else
         {
