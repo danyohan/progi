@@ -41,8 +41,9 @@ class CalculateService
         //association  Values
         $assocFees = $this->feeRepository->getDataByName('association');
 
-        $result['budget']    = $budget;
-        $result['fees']['basic']        = round($this->getValueBasic($budget, $basicFees->minimum, $basicFees->maximum,  $basicFees->value, 2));
+        $result['budget']      = $budget;
+        $result['vehicleType'] = $vehicleType;
+        $result['fees']['basic']        = $this->getValueBasic($budget, $basicFees->minimum, $basicFees->maximum,  $basicFees->value);
         $result['fees']['special']      = round($this->getValueSpecial($budget,  $specialFees->value), 2);
         $result['fees']['association']  = round($this->getAssociatedFees($budget,  $assocFees), 2);
         $result['fees']['storage']      = $fixedFee > 0 ? round($fixedFee, 2) : 0;

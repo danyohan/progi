@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BidCalculationController;
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return Inertia::render('Budget');
+})->name('index');
 
 Route::post('calculate', [BidCalculationController::class, 'calculate'])->name('calculate');
+
+
+
