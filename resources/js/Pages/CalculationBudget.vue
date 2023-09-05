@@ -62,10 +62,10 @@ export default {
             <div class="w-full max-w-xs mb-10">
                 <form @submit.prevent="submit" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <div class="mb-4">
-                        <label for="vehicleType" class="block text-gray-700 text-sm font-bold mb-2">Vehicule Type</label>
+                        <label for="vehicleType" class="block text-gray-700 text-sm font-bold mb-2">Vehicle Type</label>
                         <select  name="vehicleType" id="vehicleType" required
                             v-model="budget.vehicleType" autofocus class="block appearance-none w-full bg-white-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                            <option value="">Select Vehicule</option>
+                            <option value="">Select Vehicle</option>
                             <option value="Common">Common</option>
                             <option value="Luxury">Luxury </option>
                         </select>
