@@ -12,9 +12,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class CalculationController extends Controller
 {
 
+    const VALIDATION_MESSAGE = 'Invalid Validation';
+    
     public function __construct(
         private readonly CalculationInterface $calculateService
-    ) {
+    ) 
+    {
     }
 
     /**
@@ -35,10 +38,11 @@ class CalculationController extends Controller
             ], Response::HTTP_OK);
 
         } catch (ValidationException $exception) {
+
             Log::error($exception->getMessage());
 
             return response()->json([
-                'result' => 'Invalid Validation'
+                'result' => self::VALIDATION_MESSAGE
             ], Response::HTTP_BAD_REQUEST);
         }
     }

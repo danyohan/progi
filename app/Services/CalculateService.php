@@ -12,7 +12,8 @@ class CalculateService implements CalculationInterface
 
     public function __construct(
         private readonly CalculationRepository $feeRepository
-    ) {
+    ) 
+    {
     }
 
     /**
