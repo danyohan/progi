@@ -16,6 +16,12 @@ class CalculationController extends Controller
     ) {
     }
 
+    /**
+     * Function to return the values to API
+     *
+     * @param CalculateRequest $request
+     * @return JsonResponse
+     */
     public function getCalculation(CalculateRequest $request): JsonResponse
     {
         try {

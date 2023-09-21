@@ -15,6 +15,13 @@ class CalculateService implements CalculationInterface
     ) {
     }
 
+    /**
+     * Function for calculating the cost of the vehicle
+
+     * @param float $budget
+     * @param string $vehicleType
+     * @return array
+     */
     public function calculateCost(float $budget, string $vehicleType): array
     {
         $result = array();
