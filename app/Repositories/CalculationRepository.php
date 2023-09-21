@@ -6,19 +6,37 @@ use App\Models\Fee;
 
 class CalculationRepository
 {
-    public function getDataByType(string $type)
+    /**
+     * Function to get the fee by Type
+     *
+     * @param string $type
+     * @return mixed
+     */
+    public function getDataByType(string $type): mixed
     {
         return Fee::where('type', $type)->get();
     }
 
-    public function getDataByName(string $name)
+    /**
+     * Function to get the fee by Name
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getDataByName(string $name): mixed
     {
         return Fee::where('name', $name)->get();
     }
 
-    public function getValueByVehicle(string $name, string $vehicleType)
+    /**
+     * Function to get the fee by Vehicle
+     *
+     * @param string $name
+     * @param string $vehicleType
+     * @return mixed
+     */
+    public function getValueByVehicle(string $name, string $vehicleType): mixed
     {
-        return Fee::where('name', $name)->where('vehicleType',
-            $vehicleType)->first();
+        return Fee::where('name', $name)->where('vehicleType', $vehicleType)->first();
     }
 }

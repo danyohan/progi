@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CalculateRequest;
 use App\Interfaces\CalculationInterface;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -16,6 +17,12 @@ class CalculationController extends Controller
     ) {
     }
 
+    /**
+     * Function to return the values to API
+     *
+     * @param CalculateRequest $request
+     * @return JsonResponse
+     */
     public function getCalculation(CalculateRequest $request): JsonResponse
     {
         try {
@@ -26,7 +33,10 @@ class CalculationController extends Controller
             return response()->json([
                 'result' => $resultCost
             ], Response::HTTP_OK);
+
         } catch (ValidationException $exception) {
+            Log::error($exception->getMessage());
+
             return response()->json([
                 'result' => 'Invalid Validation'
             ], Response::HTTP_BAD_REQUEST);
